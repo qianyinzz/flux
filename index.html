@@ -53,8 +53,8 @@
             --text-secondary: #a0a0a0;
             --accent-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
             --accent-gradient-text: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.08);
             --warning-color: #ffaa00;
         }
 
@@ -67,8 +67,10 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 114, 255, 0.15), transparent 40%);
+            background-attachment: fixed;
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
@@ -110,8 +112,30 @@
         }
 
         p {
+            color: #e0e0e0;
+        }
+
+        .author {
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
         }
 
         .gradient-text {
@@ -121,46 +145,30 @@
             background-clip: text;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #b0b0b0;
         }
 
-        .btn-group {
+        .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
+            margin-top: 40px;
         }
 
         .btn {
-            padding: 15px 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -176,41 +184,79 @@
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* Pain Points */
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Pain Points Section */
         .pain-points {
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pain-points-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pain-points-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 50px;
         }
 
         .pain-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 30px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .pain-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .pain-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 15px;
-            color: #ff4d4d;
+            color: #fff;
+        }
+
+        .pain-card p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.6;
         }
 
         /* Features */
@@ -221,32 +267,62 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px;
-            border-radius: 20px;
-            transition: transform 0.3s ease;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 198, 255, 0.1), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 114, 255, 0.5);
+            transform: translateY(-8px);
+            border-color: rgba(0, 198, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-number {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 900;
-            opacity: 0.1;
+            opacity: 0.15;
             line-height: 1;
-            margin-bottom: -20px;
+            margin-bottom: -30px;
             background: var(--accent-gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-family: 'Outfit', sans-serif;
         }
 
         .feature-card h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+            color: #b0b0b0;
         }
 
         /* Testimonials & Feedback */
@@ -260,14 +336,23 @@
             margin-bottom: 30px;
             font-size: 1.8rem;
             text-align: center;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .feedback-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .feedback-card.positive {
@@ -279,33 +364,29 @@
         }
 
         .quote {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #e0e0e0;
-        }
-
-        .author {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-align: right;
+            line-height: 1.6;
         }
 
         /* Specs */
         .specs-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 50px;
-            border-radius: 20px;
+            border-radius: 30px;
             max-width: 900px;
             margin: 0 auto;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
 
         .spec-item {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .spec-item:last-child {
@@ -315,22 +396,32 @@
         }
 
         .spec-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #fff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+        }
+
+        .spec-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
         }
 
         .model-id {
-            font-family: monospace;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4px 8px;
-            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 198, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
             font-size: 0.9rem;
             color: #00c6ff;
+            border: 1px solid rgba(0, 198, 255, 0.2);
         }
 
         .warning-box {
@@ -374,6 +465,109 @@
             .btn-group {
                 flex-direction: column;
             }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Generator Styles */
+        .generator-section {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 114, 255, 0.05) 100%);
+            padding: 80px 0;
+        }
+
+        .generator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-group {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #00c6ff;
+        }
+
+        .result-container {
+            margin-top: 30px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #generated-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #00c6ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 77, 77, 0.3);
         }
     </style>
 </head>
@@ -386,30 +580,59 @@
         <div class="container hero-content">
             <h1>FLUX.2<br><span class="gradient-text">AI 绘图的新王者</span></h1>
             <p>媲美 Midjourney v6 的极致画质，终于“听得懂人话”的生成式 AI</p>
-            <div class="btn-group">
+            <div class="hero-buttons">
                 <a href="https://huggingface.co/black-forest-labs/FLUX.2-dev" target="_blank"
-                    class="btn btn-primary">获取模型</a>
-                <a href="#" class="btn btn-secondary">查看演示</a>
+                    class="btn btn-primary btn-lg">获取模型</a>
+                <a href="#generator" class="btn btn-secondary btn-lg">在线体验</a>
             </div>
         </div>
     </section>
 
-    <!-- Pain Points -->
+    <!-- Flux.2 Generator Section -->
+    <section id="generator" class="generator-section">
+        <div class="container">
+            <div class="generator-container">
+                <h2>在线体验 Flux.2</h2>
+                <p>输入提示词，立即体验 Flux.2 Schnell 的极速生成能力。</p>
+
+                <div class="input-group">
+                    <textarea id="prompt-input" placeholder="请输入提示词 (支持中文，建议使用英文以获得最佳效果)..."
+                        rows="3">black forest gateau cake spelling out the words "FLUX SCHNELL", tasty, food photography, dynamic shot</textarea>
+                    <button id="generate-btn" class="btn btn-primary">立即生成</button>
+                </div>
+
+                <div id="result-container" class="result-container" style="display: none;">
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>正在生成中，请稍候...</p>
+                    </div>
+                    <img id="generated-image" src="" alt="Generated Image" style="display: none;">
+                    <div id="error-message" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
     <section class="pain-points">
         <div class="container">
-            <h2>Flux.2 终结 AI 绘图痛点：告别崩坏与乱码</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto;">FLUX.2
-                的出现，就是为了终结这些痛点。它不仅仅是一个绘图模型，它是视觉智能的进化。</p>
+            <div class="pain-points-header">
+                <h2>Flux.2 终结 AI 绘图痛点</h2>
+                <p>告别崩坏与乱码，不仅仅是绘图模型，更是视觉智能的进化。</p>
+            </div>
             <div class="pain-grid">
                 <div class="pain-card">
+                    <div class="pain-icon">🎯</div>
                     <h3>提示词被忽略？</h3>
                     <p>精心构思的提示词，AI 却只画出了一半？Flux.2 告别“抽卡”，精准还原你脑海中的每一个细节。</p>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">🔤</div>
                     <h3>文字全是乱码？</h3>
                     <p>想要在海报上加个标题，结果出来的是一堆外星乱码？Flux.2 完美支持文字渲染，生成清晰可读的设计素材。</p>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">✋</div>
                     <h3>手部崩坏？</h3>
                     <p>为了抽出一张不崩坏的手，不得不生成几百张图？Flux.2 大幅降低肢体错误率，让“坏图”成为过去式。</p>
                 </div>
@@ -474,48 +697,14 @@
                         <p class="author">—— 硬件玩家</p>
                     </div>
                     <div class="feedback-card negative">
-                        <p class="quote">“生成速度有点慢，高分辨率图要等好几分钟，不如以前的模型快。”</p>
-                        <p class="author">—— 效率党</p>
-                    </div>
-                    <div class="feedback-card negative">
-                        <p class="quote">“风格有时候太‘硬’太写实了，缺乏一点艺术模型的想象力。”</p>
-                        <p class="author">—— 艺术创作者</p>
+                        <ul style="margin-left: 20px; margin-top: 10px; color: var(--text-secondary);">
+                            <li>注册 <strong>Hugging Face</strong> 账号。</li>
+                            <li>申请 <strong>Access Token</strong> (访问令牌)。</li>
+                            <li>在模型页面签署并接受<strong>许可协议</strong>。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Specs -->
-    <section class="specs">
-        <div class="container">
-            <h2>Flux.2 部署配置：硬件要求与环境搭建</h2>
-            <div class="specs-box">
-                <div class="spec-item">
-                    <div class="spec-title">极致体验 (完整版 32B 参数) <span class="model-id">black-forest-labs/FLUX.2-dev</span>
-                    </div>
-                    <p>需要约 <strong>64GB+ 显存</strong> (FP16)。适合拥有顶级工作站的专业用户。</p>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-title">主流推荐 (4-bit 量化版) <span class="model-id">diffusers/FLUX.2-dev-bnb-4bit</span>
-                    </div>
-                    <p>推荐使用此版本进行本地部署。<br>
-                        <strong>显卡要求：RTX 3090 / 4090 (24GB VRAM)</strong>。<br>
-                        在此配置下，您可以流畅运行并生成高质量图像。
-                    </p>
-                </div>
-
-                <div class="warning-box">
-                    <div class="warning-title">⚠️ 使用前必读</div>
-                    <p>使用 FLUX.2 模型需要满足以下条件：</p>
-                    <ul style="margin-left: 20px; margin-top: 10px; color: var(--text-secondary);">
-                        <li>注册 <strong>Hugging Face</strong> 账号。</li>
-                        <li>申请 <strong>Access Token</strong> (访问令牌)。</li>
-                        <li>在模型页面签署并接受<strong>许可协议</strong>。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Technical Deep Dive -->
@@ -589,7 +778,8 @@
                             <br>- <strong>Learning Rate</strong>：推荐 0.0004 左右。
                             <br>- <strong>Steps</strong>：1000-4000 步通常足够。
                             <br>- <strong>显存优化</strong>：在 24GB 显存显卡上，务必开启 <code>split_mode: true</code> 并使用 FP8 训练，否则极易
-                            OOM (Out of Memory)。
+                            OOM
+                            (Out of Memory)。
                         </li>
                     </ul>
                 </div>
@@ -605,7 +795,8 @@
                 <div class="spec-item">
                     <div class="spec-title">为什么需要 64GB 显存？</div>
                     <p>完整版 FLUX.2-dev 模型采用 FP16 精度加载时，仅模型权重就占用约 60GB 显存，加上推理过程中的 KV Cache 和中间激活值，总显存需求轻松突破
-                        70GB。这使得它原生只能在 NVIDIA A100/H100 或多卡互联的专业工作站上运行。</p>
+                        70GB。这使得它原生只能在 NVIDIA
+                        A100/H100 或多卡互联的专业工作站上运行。</p>
                 </div>
                 <div class="spec-item">
                     <div class="spec-title">消费级显卡的救星：4-bit / 8-bit 量化</div>
@@ -613,7 +804,8 @@
                     <ul style="color: var(--text-secondary); margin-left: 20px; list-style-type: disc;">
                         <li><strong>FP8 (8-bit)</strong>：将显存需求降低约 40%，画质几乎无损。在 RTX 4090 上，FP8 推理速度极快，是目前的最佳平衡点。</li>
                         <li><strong>NF4 (4-bit)</strong>：进一步压缩模型体积，使得在 16GB 甚至 12GB 显存的显卡上运行成为可能（需配合 CPU
-                            Offload），但可能会有轻微的画质损失。</li>
+                            Offload），但可能会有轻微的画质损失。
+                        </li>
                     </ul>
                 </div>
                 <div class="spec-item">
@@ -707,6 +899,74 @@
         resize();
         init();
         animate();
+
+        // Generator Logic
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            const prompt = document.getElementById('prompt-input').value;
+            const resultContainer = document.getElementById('result-container');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const generatedImage = document.getElementById('generated-image');
+            const errorMessage = document.getElementById('error-message');
+            const generateBtn = document.getElementById('generate-btn');
+
+            if (!prompt) {
+                alert('请输入提示词');
+                return;
+            }
+
+            // Reset UI
+            resultContainer.style.display = 'flex';
+            loadingSpinner.style.display = 'flex';
+            generatedImage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            generateBtn.disabled = true;
+            generateBtn.textContent = '生成中...';
+
+            try {
+                const response = await fetch('https://corsproxy.io/?https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer YOUR_REPLICATE_API_TOKEN',
+                        'Content-Type': 'application/json',
+                        'Prefer': 'wait'
+                    },
+                    body: JSON.stringify({
+                        input: {
+                            prompt: prompt,
+                            go_fast: true,
+                            megapixels: "1",
+                            num_outputs: 1,
+                            aspect_ratio: "1:1",
+                            output_format: "webp",
+                            output_quality: 80,
+                            num_inference_steps: 4
+                        }
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.output) {
+                    // Replicate API returns an array of image URLs
+                    const imageUrl = data.output[0];
+                    generatedImage.src = imageUrl;
+                    generatedImage.onload = () => {
+                        loadingSpinner.style.display = 'none';
+                        generatedImage.style.display = 'block';
+                    };
+                } else {
+                    throw new Error(data.error || '生成失败，请重试');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                loadingSpinner.style.display = 'none';
+                errorMessage.textContent = '生成出错: ' + error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = '立即生成';
+            }
+        });
     </script>
 </body>
 
