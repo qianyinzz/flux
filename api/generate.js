@@ -15,10 +15,10 @@ export default async function handler(request, response) {
 
     if (!token) {
         console.error('Error: REPLICATE_API_TOKEN is missing.');
-        console.log('Available Environment Variables:', Object.keys(process.env).join(', '));
+        const availableVars = Object.keys(process.env).join(', ');
+        console.log('Available Environment Variables:', availableVars);
         return response.status(500).json({
-            error: 'Server configuration error: Missing API Token',
-            debug: 'Check Vercel Function Logs for available variables'
+            error: `Server Error: Missing API Token. Available vars: ${availableVars}`
         });
     }
 
