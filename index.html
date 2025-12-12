@@ -594,6 +594,8 @@
                 <p>输入提示词，立即体验 Flux.2 Schnell 的极速生成能力。</p>
 
                 <div class="input-group">
+                    <input type="password" id="api-token-input" placeholder="请输入您的 Replicate API Token (r8_...)"
+                        style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 15px; color: white; margin-bottom: 10px;">
                     <textarea id="prompt-input" placeholder="请输入提示词 (支持中文，建议使用英文以获得最佳效果)..."
                         rows="3">black forest gateau cake spelling out the words "FLUX SCHNELL", tasty, food photography, dynamic shot</textarea>
                     <button id="generate-btn" class="btn btn-primary">立即生成</button>
@@ -845,12 +847,21 @@
 
         // Generator Logic
         document.getElementById('generate-btn').addEventListener('click', async () => {
+            const tokenInput = document.getElementById('api-token-input');
             const prompt = document.getElementById('prompt-input').value;
             const resultContainer = document.getElementById('result-container');
             const loadingSpinner = document.getElementById('loading-spinner');
             const generatedImage = document.getElementById('generated-image');
             const errorMessage = document.getElementById('error-message');
             const generateBtn = document.getElementById('generate-btn');
+
+            const token = tokenInput.value.trim();
+
+            if (!token) {
+                alert('请输入您的 Replicate API Token');
+                tokenInput.focus();
+                return;
+            }
 
             if (!prompt) {
                 alert('请输入提示词');
@@ -869,7 +880,7 @@
                 const response = await fetch('https://corsproxy.io/?https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer YOUR_REPLICATE_API_TOKEN',
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                         'Prefer': 'wait'
                     },
