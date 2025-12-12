@@ -1,0 +1,13 @@
+{
+  "name": "flux-web",
+  "version": "1.0.0",
+  "description": "FLUX.2 Web - Online AI Image Generator",
+  "type": "module",
+  "scripts": {
+    "start": "node local-server.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {}
+}

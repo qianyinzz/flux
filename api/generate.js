@@ -9,10 +9,17 @@ export default async function handler(request, response) {
         return response.status(400).json({ error: 'Prompt is required' });
     }
 
+    // Debug logging
+    console.log('Request received. Checking environment variables...');
     const token = process.env.REPLICATE_API_TOKEN;
 
     if (!token) {
-        return response.status(500).json({ error: 'Server configuration error: Missing API Token' });
+        console.error('Error: REPLICATE_API_TOKEN is missing.');
+        console.log('Available Environment Variables:', Object.keys(process.env).join(', '));
+        return response.status(500).json({
+            error: 'Server configuration error: Missing API Token',
+            debug: 'Check Vercel Function Logs for available variables'
+        });
     }
 
     try {
