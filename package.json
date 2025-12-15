@@ -4,10 +4,13 @@
   "description": "FLUX.2 Web - Online AI Image Generator",
   "type": "module",
   "scripts": {
-    "start": "node local-server.js"
+    "start": "node local-server.js",
+    "build": "echo 'No build step required'"
   },
   "engines": {
     "node": ">=18.x"
   },
-  "dependencies": {}
+  "dependencies": {
+    "resend": "^6.6.0"
+  }
 }

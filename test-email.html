@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱发送测试 - Email Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-primary:disabled,
+        .btn-secondary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 10px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status.success {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+
+        .status.loading {
+            background: #d1ecf1;
+            border: 2px solid #bee5eb;
+            color: #0c5460;
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-top-color: #0c5460;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #0d47a1;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📧 邮箱发送测试</h1>
+        <p class="subtitle">Email Sending Test</p>
+
+        <div class="info-box">
+            <strong>ℹ️ 使用说明</strong>
+            确保你的 <code>.env</code> 文件中已设置 <code>RESEND_API_KEY</code>
+        </div>
+
+        <form id="emailForm">
+            <div class="form-group">
+                <label for="from">发件人 (From)</label>
+                <input type="email" id="from" name="from" value="onboarding@resend.dev"
+                    placeholder="onboarding@resend.dev">
+            </div>
+
+            <div class="form-group">
+                <label for="to">收件人 (To) *</label>
+                <input type="email" id="to" name="to" value="zhanxj0527@163.com" placeholder="recipient@example.com"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">主题 (Subject) *</label>
+                <input type="text" id="subject" name="subject" value="Hello World" placeholder="邮件主题" required>
+            </div>
+
+            <div class="form-group">
+                <label for="html">邮件内容 (HTML Content) *</label>
+                <textarea id="html" name="html" placeholder="<p>邮件内容...</p>"
+                    required><p>Congrats on sending your <strong>first email</strong>!</p></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" onclick="resetForm()">重置</button>
+                <button type="submit" class="btn-primary">发送邮件</button>
+            </div>
+        </form>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('emailForm');
+        const statusDiv = document.getElementById('status');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const formData = {
+                from: document.getElementById('from').value,
+                to: document.getElementById('to').value,
+                subject: document.getElementById('subject').value,
+                html: document.getElementById('html').value
+            };
+
+            // 显示加载状态
+            statusDiv.className = 'status loading';
+            statusDiv.innerHTML = '<span class="spinner"></span>正在发送邮件...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        ✅ <strong>邮件发送成功！</strong><br>
+                        邮件ID: ${result.data.id || '已生成'}
+                    `;
+                    console.log('Email sent successfully:', result);
+                } else {
+                    throw new Error(result.error || result.details || '未知错误');
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `
+                    ❌ <strong>邮件发送失败</strong><br>
+                    错误信息: ${error.message}
+                `;
+                console.error('Email sending failed:', error);
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+        function resetForm() {
+            form.reset();
+            document.getElementById('from').value = 'onboarding@resend.dev';
+            document.getElementById('to').value = 'zhanxj0527@163.com';
+            document.getElementById('subject').value = 'Hello World';
+            document.getElementById('html').value = '<p>Congrats on sending your <strong>first email</strong>!</p>';
+            statusDiv.className = 'status';
+            statusDiv.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

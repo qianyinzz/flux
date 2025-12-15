@@ -1,8 +1,13 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
-const https = require('https');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
+import https from 'https';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Load .env manually since we don't want to depend on dotenv package
 const envPath = path.join(__dirname, '.env');
@@ -95,6 +100,50 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
+    // API Route: /api/send-email
+    if (parsedUrl.pathname === '/api/send-email' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+
+        req.on('end', async () => {
+            try {
+                const { to, subject, html, from } = JSON.parse(body);
+                const apiKey = process.env.RESEND_API_KEY;
+
+                if (!apiKey) {
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'Missing RESEND_API_KEY in .env' }));
+                    return;
+                }
+
+                // Import Resend
+                const { Resend } = await import('resend');
+                const resend = new Resend(apiKey);
+
+                const result = await resend.emails.send({
+                    from: from || 'onboarding@resend.dev',
+                    to: to,
+                    subject: subject,
+                    html: html
+                });
+
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: true, data: result }));
+
+            } catch (e) {
+                console.error('Email sending error:', e);
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({
+                    error: 'Failed to send email',
+                    details: e.message
+                }));
+            }
+        });
+        return;
+    }
+
     // Static File Serving
     let filePath = '.' + req.url;
     if (filePath === './') {
@@ -134,4 +183,5 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
     console.log(`API Proxy ready at http://localhost:${PORT}/api/generate`);
+    console.log(`Email API ready at http://localhost:${PORT}/api/send-email`);
 });

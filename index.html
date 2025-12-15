@@ -566,348 +566,151 @@
                 transform: rotate(0deg);
             }
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
 
-        .error-message {
-            color: #ff4d4d;
-            background: rgba(255, 77, 77, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 77, 77, 0.3);
-        }
-    </style>
-</head>
+            < !-- Hero Section --><section class="hero"><div class="container hero-content"><h1>FLUX.2 Cloud<br><span class="gradient-text">释放 120 亿参数的想象力</span></h1><p>无需 4090 显卡，云端集群即刻渲染。体验媲美 Midjourney v6 的极致画质，终于“听得懂人话”的专业级 AI。</p><div class="hero-buttons"><a href="#generator" class="btn btn-primary btn-lg">免费开始创作</a><a href="#pricing" class="btn btn-secondary btn-lg">查看订阅方案</a></div></div></section>< !-- Flux.2 Generator Section --><section id="generator" class="generator-section"><div class="container"><div class="generator-container"><h2>在线体验 Flux.2</h2><p>输入提示词，立即体验 Flux.2 Schnell 的极速生成能力。</p><div class="input-group"><textarea id="prompt-input" placeholder="请输入提示词 (支持中文，建议使用英文以获得最佳效果)..."
+            rows="3">black forest gateau cake spelling out the words "FLUX SCHNELL",
+            tasty,
+            food photography,
+            dynamic shot</textarea><button id="generate-btn" class="btn btn-primary">立即生成</button></div><div id="result-container" class="result-container" style="display: none;"><div class="loading-spinner" id="loading-spinner"><div class="spinner"></div><p>正在生成中，请稍候...</p></div><img id="generated-image" src="" alt="Generated Image" style="display: none;"><div id="error-message" class="error-message" style="display: none;"></div></div></div></div></section>< !-- Pain Points Section --><section class="pain-points"><div class="container"><div class="pain-points-header"><h2>为什么选择 Flux.2 Cloud？</h2><p>告别昂贵的硬件投入与繁琐的部署流程，专注于创作本身。</p></div><div class="pain-grid"><div class="pain-card"><div class="pain-icon">💻</div><h3>显卡跑不动？</h3><p>本地运行 Flux.2 需要 24GB+显存的顶级显卡。使用 Flux.2 Cloud，无论手机还是轻薄本，都能秒级出图。</p></div><div class="pain-card"><div class="pain-icon">⚙️</div><h3>部署太繁琐？</h3><p>告别 Python 环境配置、依赖冲突和报错。打开浏览器，注册即用，零技术门槛体验 SOTA 模型。</p></div><div class="pain-card"><div class="pain-icon">🎯</div><h3>提示词难写？</h3><p>内置智能提示词优化器，自动润色您的创意。模型原生支持中文，精准还原您脑海中的每一个细节。</p></div></div></div></section>< !-- Features --><section class="features"><div class="container"><h2>Flux.2 Cloud 核心优势</h2><div class="features-grid"><div class="feature-card"><div class="feature-number">01</div><h3>视觉智能引擎</h3><p>基于 120 亿参数的 Transformer 架构，它懂物理，也懂光影。无论是复杂的反射、折射，还是多光源下的阴影表现，都能处理得自然逼真。</p></div><div class="feature-card"><div class="feature-number">02</div><h3>商业级生产力</h3><p><strong>完美文字渲染</strong>：准确生成 Logo、海报标题。<br><strong>多图参考</strong>：支持同时参考多张图片，保持角色一致性，专为商业设计打造。</p></div><div class="feature-card"><div class="feature-number">03</div><h3>云端工作流</h3><p>您的所有创作自动保存于云端画廊。支持创建专属项目文件夹，随时随地通过任何设备访问和管理您的设计资产。</p></div><div class="feature-card"><div class="feature-number">04</div><h3>企业级安全</h3><p>提供私有化部署选项与 API 接入。数据加密传输，版权完全归属于您。支持团队协作与权限管理，保障企业资产安全。</p></div></div></div></section>< !-- Technical Deep Dive --><section class="technical-dive" style="background: #0a0a0a;"><div class="container"><h2>Flux.2 技术解析：为何我们需要 120 亿参数？</h2><div class="specs-box" style="max-width: 100%;"><div class="spec-item"><div class="spec-title">架构革新：流匹配 (Flow Matching) 与 VLM 的完美融合</div><p>FLUX.2 并非传统的扩散模型 (Diffusion Model)，而是基于<strong>潜在流匹配 (Latent Flow Matching)</strong>架构。它核心耦合了一个 <strong>24B 参数的 Mistral-3 视觉语言模型 (VLM)</strong>与一个 <strong>32B 参数的整流 Transformer (Rectified Flow Transformer)</strong>。 </p><p>这种庞大的架构带来了前所未有的能力：</p><ul style="color: var(--text-secondary); margin-left: 20px; list-style-type: disc;"><li><strong>物理世界的真实理解</strong>：得益于 VLM，模型不再是简单地匹配关键词，而是真正“理解”了光影、透视和空间关系。 </li><li><strong>极致的细节保留</strong>：整流流 (Rectified Flow) 提供了更直的生成轨迹，这意味着在云端推理时，我们能以更少的步数生成细节更丰富的图像。 </li></ul></div><div class="spec-item"><div class="spec-title">云端算力的必要性</div><p>如此强大的模型带来了巨大的算力挑战：完整版模型权重占用超过 60GB 显存，推理峰值需求突破 70GB。这使得它无法在普通消费级显卡上运行。</p><div class="warning-box"><div class="warning-title">💡 我们的解决方案</div><p>Flux.2 Cloud 部署于高性能 H100 集群。您无需购买昂贵的专业工作站，即可通过网页端满血体验 120 亿参数模型的全部实力。我们为您处理了所有的硬件复杂性。</p></div></div></div></div></section>< !-- Pricing Section --><section id="pricing" class="pricing-section"><div class="container"><h2 style="text-align: center; margin-bottom: 60px;">灵活的订阅方案</h2><div class="pain-grid">< !-- Free Plan --><div class="pain-card" style="text-align: left;"><h3 style="color: #00c6ff;">个人免费版</h3><div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥0<span style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月</span></div><p style="margin-bottom: 30px;">适合初学者体验 Flux.2 的强大能力。</p><ul style="list-style: none; color: #e0e0e0; line-height: 2;"><li>✓ 每日 10 张免费积分</li><li>✓ 标准生成速度</li><li>✓ 社区画廊访问</li><li>✓ 个人非商业授权</li></ul><a href="#" class="btn btn-secondary"
+            style="width: 100%; margin-top: 30px; text-align: center;">立即注册</a></div>< !-- Pro Plan --><div class="pain-card"
+            style="text-align: left; border-color: #00c6ff; background: rgba(0, 198, 255, 0.05);"><div style="position: absolute; top: -15px; right: 20px; background: var(--accent-gradient); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">最受欢迎</div><h3 style="color: #fff;">专业创作版</h3><div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥99<span style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月</span></div><p style="margin-bottom: 30px;">为设计师和创作者打造的生产力工具。</p><ul style="list-style: none; color: #fff; line-height: 2;"><li>✓ <strong>无限量</strong>生成积分</li><li>✓ <strong>极速模式</strong>(H100 优先队列)</li><li>✓ 私有画廊与隐私模式</li><li>✓ 商业授权许可</li><li>✓ 优先客服支持</li></ul><a href="#" class="btn btn-primary"
+            style="width: 100%; margin-top: 30px; text-align: center;">开始试用</a></div>< !-- Team Plan --><div class="pain-card" style="text-align: left;"><h3 style="color: #ffaa00;">企业团队版</h3><div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥399<span style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月起</span></div><p style="margin-bottom: 30px;">适合工作室和企业的协作解决方案。</p><ul style="list-style: none; color: #e0e0e0; line-height: 2;"><li>✓ 包含 5 个专业版席位</li><li>✓ 团队共享资产库</li><li>✓ API 访问权限</li><li>✓ 专属客户经理</li><li>✓ 私有化部署支持 (需咨询)</li></ul><a href="#" class="btn btn-secondary"
+            style="width: 100%; margin-top: 30px; text-align: center;">联系销售</a><a href="#" class="btn btn-primary">免费注册</a><a href="#" class="btn btn-secondary">联系我们</a></div><div style="margin-top: 50px; font-size: 0.9rem; color: #666;"><p>&copy;
+            2024 Flux.2 Web. All rights reserved. | <a href="#" style="color: #666;">隐私政策</a>| <a href="#" style="color: #666;">服务条款</a></p></div></div></footer><script>const canvas=document.getElementById('particle-canvas');
+            const ctx=canvas.getContext('2d');
 
-<body>
-    <canvas id="particle-canvas"></canvas>
+            let width,
+            height;
+            let particles=[];
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>FLUX.2 Cloud<br><span class="gradient-text">释放 120 亿参数的想象力</span></h1>
-            <p>无需 4090 显卡，云端集群即刻渲染。体验媲美 Midjourney v6 的极致画质，终于“听得懂人话”的专业级 AI。</p>
-            <div class="hero-buttons">
-                <a href="#generator" class="btn btn-primary btn-lg">免费开始创作</a>
-                <a href="#pricing" class="btn btn-secondary btn-lg">查看订阅方案</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flux.2 Generator Section -->
-    <section id="generator" class="generator-section">
-        <div class="container">
-            <div class="generator-container">
-                <h2>在线体验 Flux.2</h2>
-                <p>输入提示词，立即体验 Flux.2 Schnell 的极速生成能力。</p>
-
-                <div class="input-group">
-                    <textarea id="prompt-input" placeholder="请输入提示词 (支持中文，建议使用英文以获得最佳效果)..."
-                        rows="3">black forest gateau cake spelling out the words "FLUX SCHNELL", tasty, food photography, dynamic shot</textarea>
-                    <button id="generate-btn" class="btn btn-primary">立即生成</button>
-                </div>
-
-                <div id="result-container" class="result-container" style="display: none;">
-                    <div class="loading-spinner" id="loading-spinner">
-                        <div class="spinner"></div>
-                        <p>正在生成中，请稍候...</p>
-                    </div>
-                    <img id="generated-image" src="" alt="Generated Image" style="display: none;">
-                    <div id="error-message" class="error-message" style="display: none;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pain Points Section -->
-    <section class="pain-points">
-        <div class="container">
-            <div class="pain-points-header">
-                <h2>为什么选择 Flux.2 Cloud？</h2>
-                <p>告别昂贵的硬件投入与繁琐的部署流程，专注于创作本身。</p>
-            </div>
-            <div class="pain-grid">
-                <div class="pain-card">
-                    <div class="pain-icon">💻</div>
-                    <h3>显卡跑不动？</h3>
-                    <p>本地运行 Flux.2 需要 24GB+ 显存的顶级显卡。使用 Flux.2 Cloud，无论手机还是轻薄本，都能秒级出图。</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">⚙️</div>
-                    <h3>部署太繁琐？</h3>
-                    <p>告别 Python 环境配置、依赖冲突和报错。打开浏览器，注册即用，零技术门槛体验 SOTA 模型。</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon">🎯</div>
-                    <h3>提示词难写？</h3>
-                    <p>内置智能提示词优化器，自动润色您的创意。模型原生支持中文，精准还原您脑海中的每一个细节。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <h2>Flux.2 Cloud 核心优势</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-number">01</div>
-                    <h3>视觉智能引擎</h3>
-                    <p>基于 120 亿参数的 Transformer 架构，它懂物理，也懂光影。无论是复杂的反射、折射，还是多光源下的阴影表现，都能处理得自然逼真。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">02</div>
-                    <h3>商业级生产力</h3>
-                    <p><strong>完美文字渲染</strong>：准确生成 Logo、海报标题。<br><strong>多图参考</strong>：支持同时参考多张图片，保持角色一致性，专为商业设计打造。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">03</div>
-                    <h3>云端工作流</h3>
-                    <p>您的所有创作自动保存于云端画廊。支持创建专属项目文件夹，随时随地通过任何设备访问和管理您的设计资产。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">04</div>
-                    <h3>企业级安全</h3>
-                    <p>提供私有化部署选项与 API 接入。数据加密传输，版权完全归属于您。支持团队协作与权限管理，保障企业资产安全。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Deep Dive -->
-    <section class="technical-dive" style="background: #0a0a0a;">
-        <div class="container">
-            <h2>Flux.2 技术解析：为何我们需要 120 亿参数？</h2>
-            <div class="specs-box" style="max-width: 100%;">
-                <div class="spec-item">
-                    <div class="spec-title">架构革新：流匹配 (Flow Matching) 与 VLM 的完美融合</div>
-                    <p>FLUX.2 并非传统的扩散模型 (Diffusion Model)，而是基于<strong>潜在流匹配 (Latent Flow Matching)</strong> 架构。它核心耦合了一个
-                        <strong>24B 参数的 Mistral-3 视觉语言模型 (VLM)</strong> 与一个 <strong>32B 参数的整流 Transformer (Rectified
-                            Flow Transformer)</strong>。
-                    </p>
-                    <p>这种庞大的架构带来了前所未有的能力：</p>
-                    <ul style="color: var(--text-secondary); margin-left: 20px; list-style-type: disc;">
-                        <li><strong>物理世界的真实理解</strong>：得益于 VLM，模型不再是简单地匹配关键词，而是真正“理解”了光影、透视和空间关系。
-                        </li>
-                        <li><strong>极致的细节保留</strong>：整流流 (Rectified Flow) 提供了更直的生成轨迹，这意味着在云端推理时，我们能以更少的步数生成细节更丰富的图像。
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="spec-item">
-                    <div class="spec-title">云端算力的必要性</div>
-                    <p>如此强大的模型带来了巨大的算力挑战：完整版模型权重占用超过 60GB 显存，推理峰值需求突破 70GB。这使得它无法在普通消费级显卡上运行。</p>
-                    <div class="warning-box">
-                        <div class="warning-title">💡 我们的解决方案</div>
-                        <p>Flux.2 Cloud 部署于高性能 H100 集群。您无需购买昂贵的专业工作站，即可通过网页端满血体验 120 亿参数模型的全部实力。我们为您处理了所有的硬件复杂性。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 60px;">灵活的订阅方案</h2>
-            <div class="pain-grid">
-                <!-- Free Plan -->
-                <div class="pain-card" style="text-align: left;">
-                    <h3 style="color: #00c6ff;">个人免费版</h3>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥0<span
-                            style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月</span></div>
-                    <p style="margin-bottom: 30px;">适合初学者体验 Flux.2 的强大能力。</p>
-                    <ul style="list-style: none; color: #e0e0e0; line-height: 2;">
-                        <li>✓ 每日 10 张免费积分</li>
-                        <li>✓ 标准生成速度</li>
-                        <li>✓ 社区画廊访问</li>
-                        <li>✓ 个人非商业授权</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary"
-                        style="width: 100%; margin-top: 30px; text-align: center;">立即注册</a>
-                </div>
-
-                <!-- Pro Plan -->
-                <div class="pain-card"
-                    style="text-align: left; border-color: #00c6ff; background: rgba(0, 198, 255, 0.05);">
-                    <div
-                        style="position: absolute; top: -15px; right: 20px; background: var(--accent-gradient); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
-                        最受欢迎</div>
-                    <h3 style="color: #fff;">专业创作版</h3>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥99<span
-                            style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月</span></div>
-                    <p style="margin-bottom: 30px;">为设计师和创作者打造的生产力工具。</p>
-                    <ul style="list-style: none; color: #fff; line-height: 2;">
-                        <li>✓ <strong>无限量</strong> 生成积分</li>
-                        <li>✓ <strong>极速模式</strong> (H100 优先队列)</li>
-                        <li>✓ 私有画廊与隐私模式</li>
-                        <li>✓ 商业授权许可</li>
-                        <li>✓ 优先客服支持</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary"
-                        style="width: 100%; margin-top: 30px; text-align: center;">开始试用</a>
-                </div>
-
-                <!-- Team Plan -->
-                <div class="pain-card" style="text-align: left;">
-                    <h3 style="color: #ffaa00;">企业团队版</h3>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 20px 0;">¥399<span
-                            style="font-size: 1rem; color: #a0a0a0; font-weight: 400;">/月起</span></div>
-                    <p style="margin-bottom: 30px;">适合工作室和企业的协作解决方案。</p>
-                    <ul style="list-style: none; color: #e0e0e0; line-height: 2;">
-                        <li>✓ 包含 5 个专业版席位</li>
-                        <li>✓ 团队共享资产库</li>
-                        <li>✓ API 访问权限</li>
-                        <li>✓ 专属客户经理</li>
-                        <li>✓ 私有化部署支持 (需咨询)</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary"
-                        style="width: 100%; margin-top: 30px; text-align: center;">联系销售</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <h2>立即开启您的 AI 创作之旅</h2>
-            <p>不要让硬件限制了您的想象力。注册 Flux.2 Cloud，即刻释放创意。</p>
-            <br>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary">免费注册</a>
-                <a href="#" class="btn btn-secondary">联系我们</a>
-            </div>
-            <div style="margin-top: 50px; font-size: 0.9rem; color: #666;">
-                <p>&copy; 2024 Flux.2 Web. All rights reserved. | <a href="#" style="color: #666;">隐私政策</a> | <a
-                        href="#" style="color: #666;">服务条款</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width, height;
-        let particles = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2;
-                this.alpha = Math.random() * 0.5 + 0.1;
+            function resize() {
+                width=canvas.width=window.innerWidth;
+                height=canvas.height=window.innerHeight;
             }
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+            class Particle {
+                constructor() {
+                    this.x=Math.random() * width;
+                    this.y=Math.random() * height;
+                    this.vx=(Math.random() - 0.5) * 0.5;
+                    this.vy=(Math.random() - 0.5) * 0.5;
+                    this.size=Math.random() * 2;
+                    this.alpha=Math.random() * 0.5+0.1;
+                }
 
-                if (this.x < 0) this.x = width;
-                if (this.x > width) this.x = 0;
-                if (this.y < 0) this.y = height;
-                if (this.y > height) this.y = 0;
+                update() {
+                    this.x+=this.vx;
+                    this.y+=this.vy;
+
+                    if (this.x < 0) this.x=width;
+                    if (this.x > width) this.x=0;
+                    if (this.y < 0) this.y=height;
+                    if (this.y > height) this.y=0;
+                }
+
+                draw() {
+                    ctx.fillStyle=`rgba(255, 255, 255, $ {
+                            this.alpha
+                        })`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
 
-            draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+            function init() {
+                particles=[];
 
-        function init() {
-            particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            resize();
-            init();
-        });
-
-        resize();
-        init();
-        animate();
-
-        // Generator Logic
-        document.getElementById('generate-btn').addEventListener('click', async () => {
-            const prompt = document.getElementById('prompt-input').value;
-            const resultContainer = document.getElementById('result-container');
-            const loadingSpinner = document.getElementById('loading-spinner');
-            const generatedImage = document.getElementById('generated-image');
-            const errorMessage = document.getElementById('error-message');
-            const generateBtn = document.getElementById('generate-btn');
-
-            if (!prompt) {
-                alert('请输入提示词');
-                return;
+                for (let i=0; i < 100; i++) {
+                    particles.push(new Particle());
+                }
             }
 
-            // Reset UI
-            resultContainer.style.display = 'flex';
-            loadingSpinner.style.display = 'flex';
-            generatedImage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            generateBtn.disabled = true;
-            generateBtn.textContent = '生成中...';
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
 
-            try {
-                const response = await fetch('/api/generate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ prompt: prompt })
+                particles.forEach(p=> {
+                        p.update();
+                        p.draw();
+                    });
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', ()=> {
+                    resize();
+                    init();
                 });
 
-                const data = await response.json();
+            resize();
+            init();
+            animate();
+
+            // Generator Logic
+            document.getElementById('generate-btn').addEventListener('click', async ()=> {
+                    const prompt=document.getElementById('prompt-input').value;
+                    const resultContainer=document.getElementById('result-container');
+                    const loadingSpinner=document.getElementById('loading-spinner');
+                    const generatedImage=document.getElementById('generated-image');
+                    const errorMessage=document.getElementById('error-message');
+                    const generateBtn=document.getElementById('generate-btn');
+
+                    if ( !prompt) {
+                        alert('请输入提示词');
+                        return;
+                    }
+
+                    // Reset UI
+                    resultContainer.style.display='flex';
+                    loadingSpinner.style.display='flex';
+                    generatedImage.style.display='none';
+                    errorMessage.style.display='none';
+                    generateBtn.disabled=true;
+                    generateBtn.textContent='生成中...';
+
+                    try {
+                        const response=await fetch('/api/generate', {
+
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+
+                            ,
+                            body: JSON.stringify({
+                                prompt: prompt
+                            })
+                    });
+
+                const data=await response.json();
 
                 if (response.ok && data.output) {
                     // Replicate API returns an array of image URLs
-                    const imageUrl = data.output[0];
-                    generatedImage.src = imageUrl;
-                    generatedImage.onload = () => {
-                        loadingSpinner.style.display = 'none';
-                        generatedImage.style.display = 'block';
-                    };
-                } else {
+                    const imageUrl=data.output[0];
+                    generatedImage.src=imageUrl;
+
+                    generatedImage.onload=()=> {
+                        loadingSpinner.style.display='none';
+                        generatedImage.style.display='block';
+                    }
+
+                    ;
+                }
+
+                else {
                     throw new Error(data.error || '生成失败，请重试');
                 }
-            } catch (error) {
+            }
+
+            catch (error) {
                 console.error('Error:', error);
-                loadingSpinner.style.display = 'none';
-                errorMessage.textContent = '生成出错: ' + error.message;
-                errorMessage.style.display = 'block';
-            } finally {
-                generateBtn.disabled = false;
-                generateBtn.textContent = '立即生成';
+                loadingSpinner.style.display='none';
+                errorMessage.textContent='生成出错: ' + error.message;
+                errorMessage.style.display='block';
+            }
+
+            finally {
+                generateBtn.disabled=false;
+                generateBtn.textContent='立即生成';
             }
         });
-    </script>
-</body>
-
-</html>
+        </script></body></html>
